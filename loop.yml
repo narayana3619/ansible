@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+          - name: install multipull packages
+            yum:
+                    name: "{{ item }}"
+                    state: present
+            loop:
+                    - java
+                    - git
+                    - maven
+                    - httpd

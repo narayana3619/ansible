@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: true
+  vars:
+          package_name: httpd
+  tasks:
+          - name: message
+            debug:
+                    msg: "identfied package for installing package is {{ package_name }}"
+                    verbosity: 0
+          - name: install httpd
+            yum:
+                    name: "{{ package_name }}"
+                    state: present
+          - debug:
+            msg: installed httpd

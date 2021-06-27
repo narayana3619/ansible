@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: yes
+  vars:
+          package_name: git
+  tasks:
+          - name: installing git
+            yum:
+                    name: "{{ package_name }}"
+                    state: present
+                    update_cache: yes
+
+
+# ansible-playbook -i hosts vars.yml -e "package_name=git" 

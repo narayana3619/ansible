@@ -1,0 +1,18 @@
+---
+- hosts: all
+  become: yes
+  vars:
+          url: https://jaffa3619.s3.ap-south-1.amazonaws.com/index.html
+          dest: /opt/ansible/index.html
+  tasks:
+          - name: cp file from one location to anther location
+            get_url:
+                    url: "{{ url }}"
+                    dest: "{{ dest }}"
+          - debug:
+                  msg: copy file from {{ url }} to {{ dest }}
+          - name: reading file content
+            command: cat "{{ dest }}"
+            register: dest_content
+          - debug:
+                  var: dest_content

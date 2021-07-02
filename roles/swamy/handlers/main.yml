@@ -1,0 +1,6 @@
+---
+# handlers file for swamy
+- name: restart httpd
+  service:
+          name: httpd
+          state: restarted

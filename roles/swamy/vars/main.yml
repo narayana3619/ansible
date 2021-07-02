@@ -1,0 +1,4 @@
+---
+# vars file for swamy
+apache_pack_redhat: httpd
+apache_pack_debian: apache2

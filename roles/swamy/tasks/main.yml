@@ -1,0 +1,21 @@
+---
+# tasks file for swamy
+- name: installing httpd
+  yum:
+          name: "{{ apache_pack_redhat }}"
+          state: present
+
+  notify:
+          - restart httpd
+  when: ansible_os_family == "RedHat"
+
+
+- name: installing apache
+  apt:
+          name: "{{ apache_pack_debian }}"
+          state: present
+  
+  notify:
+          - restart httpd
+  when: ansible_os_family == "Debian"
+

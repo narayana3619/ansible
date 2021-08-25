@@ -1,0 +1,14 @@
+---
+- hosts: webserver
+  become: yes
+  tasks:
+  - name: checking apache installed or not
+    yum:
+      list="{{apache}}"
+    register: is_installed
+
+   - name: install apache if not installed
+     yum:
+      name: "{{package}}"
+      state: latest
+     when: (is_installed.results|length ==1)
